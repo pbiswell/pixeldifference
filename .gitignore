@@ -1,0 +1,9 @@
+tests/
+pixeldifference/diff.png
+pixeldifference/image.jpg
+pixeldifference/image2.jpg
+pixeldifference/image3.jpg
+.vscode/
+build/
+dist/
+pixeldifference.egg-info/

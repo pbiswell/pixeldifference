@@ -1,0 +1,1 @@
+from pixeldifference.pixeldifference import PixelDifference
