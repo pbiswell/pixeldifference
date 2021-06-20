@@ -2,16 +2,20 @@
 
 ## Intro
 
-This package is for comparing pixel differences between two images. It will check the same pixel positions on both images. This can be used to compare how different an image is to the original after compression or editing.
+This package is for comparing pixel differences between two images. It will check the same pixel positions on both images. This can be used to compare how different an image is to the original after compression or editing, for example.
 
-If one image is cropped, for example, you can use ignoreSize=True to only compare the area which is present in both images.
+Due to some functions being relatively slow on large images, I will recode them into C in a future update.
+
+Please note that I am not educated in colour science. If there are any mistakes in implementations or calculations, please let me know and I will fix them as soon as possible. Thank you.
 
 ## Requirements
 
-You need python3 and pillow to use this package.
+You need python3, pillow, and numpy to use this package.
 
 ```
 pip install pillow
+
+pip install numpy
 ```
 
 ## Installation
@@ -49,11 +53,15 @@ pixelsdifferent = pd.pixels
 
 ### Average Colour Distance
 
-The following functions calculate colour difference between all pixels in two images, and provide averages.
+The following functions calculate colour difference between all selected pixels in two images, and provide averages.
 
 #### Simple RGB Euclidean Distance
 
+This uses the following formula to calculate the colour distance between all of the selected pixels.
+
 ![Simple Euclidean Distance Formula](https://github.com/pbiswell/pixeldifference/blob/master/assets/SimpleEuclideanDistance.svg)
+
+Link: https://en.wikipedia.org/wiki/Color_difference#sRGB
 
 ```
 ed = PixelDifference(imageOne, imageTwo).EuclideanDistance()
@@ -72,6 +80,12 @@ ed.elapsed
 
 #### More Accurate RGB Euclidean Distance
 
+![Better Euclidean Distance Formula](https://github.com/pbiswell/pixeldifference/blob/master/assets/EuclideanDistance2.svg)
+
+This uses the following formula to calculate the colour distance between all of the selected pixels.
+
+Link: https://en.wikipedia.org/wiki/Color_difference#sRGB
+
 ```
 ed2 = PixelDifference(imageOne, imageTwo).EuclideanDistance2()
 
@@ -88,6 +102,12 @@ ed2.elapsed
 ```
 
 #### Redmean
+
+This uses the following formula to calculate the colour distance between all of the selected pixels.
+
+![Redmean Distance Formula](https://github.com/pbiswell/pixeldifference/blob/master/assets/Redmean.svg)
+
+Link: https://en.wikipedia.org/wiki/Color_difference#sRGB
 
 ```
 redmean = PixelDifference(imageOne, imageTwo).Redmean()
@@ -106,7 +126,11 @@ redmean.elapsed
 
 ### CIE76 - LAB Colour Distance
 
+This converts the image from RGB to LAB, and uses the following formula to calculate the average CIE76 distance between all of the selected pixels in the CIELAB colourspace.
 
+![CIE76 Distance Formula](https://github.com/pbiswell/pixeldifference/blob/master/assets/CIE76.svg)
+
+Link: https://en.wikipedia.org/wiki/Color_difference#CIE76
 
 ```
 cie76 = PixelDifference(imageOne, imageTwo).CIE76()
