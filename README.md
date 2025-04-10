@@ -8,6 +8,8 @@ Due to some functions being relatively slow on large images, I will recode them 
 
 Please note that I am not educated in colour science. If there are any mistakes in implementations or calculations, please let me know and I will fix them as soon as possible. Thank you.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V84X6JM)
+
 ## Requirements
 
 You need python3, pillow, and numpy to use this package.
